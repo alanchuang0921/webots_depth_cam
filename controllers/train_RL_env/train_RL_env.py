@@ -204,7 +204,7 @@ def train_RL_process_cam(log_dir, num_frames=100):
                 # --------------------------------------
                 # print some 
                 mean_reward = np.mean(all_total_rewards[-10:])
-                print("frames: %5d, reward: %5f, loss: %4f, epsilon: %5f, episode: %4d" % (i_frame, np.mean(all_total_rewards[-10:]), loss, agent.epsilon, i_episode))
+                print("frames: %5d, reward: %5f, loss: %5f, epsilon: %5f, episode: %4d" % (i_frame, np.mean(all_total_rewards[-10:]), loss, agent.epsilon, i_episode))
                 # --------------------------------------
                 # save some 
                 if is_save:
@@ -342,7 +342,7 @@ def RL_process_random():
 if __name__ == "__main__":
     # -----------------------------------------------
     # env setting
-    SEED = 525
+    SEED = 525 
     state_type = "depth"      # ["numerical", "RGB", "gray","depth"]
     model_name = f"DQN_{state_type}"
     num_frames = int(1.5e6)

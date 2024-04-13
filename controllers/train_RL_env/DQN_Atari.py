@@ -191,6 +191,8 @@ class DQNAgent:
 
     def compute_td_loss(self, states, actions, rewards, next_states, is_done, gamma=0.99):
         """ Compute td loss using torch operations only. Use the formula above. """
+
+
         actions = torch.tensor(actions).long()    # shape: [batch_size]
         rewards = torch.tensor(rewards, dtype =torch.float)  # shape: [batch_size]
         is_done = torch.tensor(is_done).bool()  # shape: [batch_size]
@@ -202,6 +204,7 @@ class DQNAgent:
 
         # get q-values for all actions in current states
         predicted_qvalues = self.DQN(states)
+        #print("predict Q value=",predicted_qvalues)
 
         # select q-values for chosen actions
         predicted_qvalues_for_actions = predicted_qvalues[
@@ -210,12 +213,14 @@ class DQNAgent:
 
         # compute q-values for all actions in next states
         predicted_next_qvalues = self.DQN_target(next_states) # YOUR CODE
+        
 
         # compute V*(next_states) using predicted next q-values
         next_state_values =  predicted_next_qvalues.max(-1)[0] # YOUR CODE
 
         # compute "target q-values" for loss - it's what's inside square parentheses in the above formula.
         target_qvalues_for_actions = rewards + gamma *next_state_values # YOUR CODE
+        #print("target Q value=",predicted_qvalues)
 
         # at the last state we shall use simplified formula: Q(s,a) = r(s,a) since s' doesn't exist
         target_qvalues_for_actions = torch.where(

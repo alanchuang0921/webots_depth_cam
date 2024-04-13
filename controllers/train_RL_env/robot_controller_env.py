@@ -396,13 +396,18 @@ class EnvBall:
         self.observation.interact_object[-1] = self.observation.interact_object[-1] + 0.12
         # ------------------------------------------------------------------------------
         # set cam observation 
-        #self.frame = self.cam.get_frame()
-        self.frame = self.depth_cam.get_frame()
+        if self.state_type == "depth":
+            self.frame = self.depth_cam.get_frame()
+        else:
+            self.frame = self.cam.get_frame()
+        #
         # self.cam.show_frame() # TODO add cam infomation
         # ------------------------------------------------------------------------------
 
         return None
     
+
+
     def get_state(self):
         # ------------------------------------------------------------------------------
         # set numerical state 
@@ -436,14 +441,30 @@ class EnvBall:
         # set gray state (1 channels)
         elif self.state_type == "gray":
             # gray image
-            self.state = cv2.cvtColor(self.frame[:, :, :3], cv2.COLOR_BGR2GRAY)            
-            self.state = np.expand_dims(self.state, axis=-1)   
+            self.state = cv2.cvtColor(self.frame[:, :, :3], cv2.COLOR_BGR2GRAY)  
+
+            #print("gray_shape",self.state.shape)
+            def save_array_to_txt(array, filename):
+                np.savetxt(filename, array)
+            save_array_to_txt(self.state, 'gray_image.txt')   
+            
+
+            self.state = np.expand_dims(self.state, axis=-1) 
+            print("state.shape=",self.state.shape)  
         # ------------------------------------------------------------------------------
         # set depth state(1 channel)
         elif self.state_type == "depth":
-            # RGB
+            # depth
             self.state = self.frame
+            # self.state = cv2.cvtColor(self.frame[:, :, :3], cv2.COLOR_BGR2GRAY) 
+            def save_array_to_txt(array, filename):
+                np.savetxt(filename, array)
+            save_array_to_txt(self.state, 'depth_image.txt')            
+            
+            #print("depth_shape",self.state.shape)
             self.state = np.expand_dims(self.state, axis=-1)  
+            #print("state.shape=",self.state.shape)  
+
 
         return self.state
 
@@ -593,6 +614,7 @@ class Camera:
     
     def get_frame(self):
         self.frame = np.frombuffer(self.cam_node.getImage(), dtype=np.uint8).reshape((self.cam_node.getHeight(), self.cam_node.getWidth(), 4))
+        print("frame.shape=",self.frame.shape)
         return self.frame
     
     def show_frame(self):
@@ -607,10 +629,14 @@ class Depth_Camera:
         self.cam_node.enable(timestep)
         self.frame = None
     
+
+
     def get_frame(self):
         #self.frame = np.frombuffer(self.cam_node.getRangeImage(), dtype=np.uint8).reshape((self.cam_node.getHeight(), self.cam_node.getWidth(), 4))
-        self.frame=np.ctypeslib.as_array(self.cam_node.getRangeImage(data_type="buffer"), (self.cam_node.getWidth() * self.cam_node.getHeight(),)).reshape((self.cam_node.getWidth() , self.cam_node.getHeight()))
-
+        self.frame=np.ctypeslib.as_array(self.cam_node.getRangeImage(data_type="buffer"), (self.cam_node.getWidth() * self.cam_node.getHeight(),)).reshape((self.cam_node.getWidth() , self.cam_node.getHeight(),))
+        
+        #print("frame.shape=",self.frame.shape)
+        # self.frame=
         return self.frame
     
     def show_frame(self):
