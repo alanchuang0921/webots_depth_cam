@@ -1,0 +1,26 @@
+current machine: DESKTOP-A6G6CDN
+current path: C:\alan\ROBOT\20240410\webots_tutorial\integration\controllers\train_RL_env
+current time: 2024-04-14 09:18:08
+-----------------------------------
+num_frames: 1500000
+-----------------------------------
+DQN hyperparameter
+LR:				0.0002
+TAU:			0.005
+MAX_BUFF:		100000
+EPS_DECAY:		500000
+BATCH_SIZE:		128
+LEARNING_START:	10000
+-----------------------------------
+env hyperparameter
+reward_slope:			-10.0
+big_negative_reward:	-500.0
+-----------------------------------
+i_frame:	100,	i_episode:	4,	mean reward:	-671.67,	is_saved_model:	True
+i_frame:	200,	i_episode:	14,	mean reward:	-541.12,	is_saved_model:	True
+i_frame:	300,	i_episode:	19,	mean reward:	-563.97,	is_saved_model:	False
+i_frame:	400,	i_episode:	26,	mean reward:	-573.27,	is_saved_model:	False
+i_frame:	500,	i_episode:	33,	mean reward:	-573.34,	is_saved_model:	False
+i_frame:	600,	i_episode:	38,	mean reward:	-567.73,	is_saved_model:	False
+i_frame:	700,	i_episode:	44,	mean reward:	-599.7,	is_saved_model:	False
+i_frame:	800,	i_episode:	53,	mean reward:	-558.66,	is_saved_model:	False

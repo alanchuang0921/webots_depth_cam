@@ -9,7 +9,7 @@ import torch
 from torch.utils.tensorboard import SummaryWriter
 
 from DQN import DQN
-from DQN_Atari import DQNAgent
+from DQN_Atari_with_PRE import DQNAgent
 from robot_controller_env import DRV90_Robot, EnvBall
 
 # ------------------------------------------------------------------

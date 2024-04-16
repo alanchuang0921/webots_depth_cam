@@ -444,9 +444,9 @@ class EnvBall:
             self.state = cv2.cvtColor(self.frame[:, :, :3], cv2.COLOR_BGR2GRAY)  
 
             #print("gray_shape",self.state.shape)
-            def save_array_to_txt(array, filename):
-                np.savetxt(filename, array)
-            save_array_to_txt(self.state, 'gray_image.txt')   
+            # def save_array_to_txt(array, filename):
+            #     np.savetxt(filename, array)
+            # save_array_to_txt(self.state, 'gray_image.txt')   
             
 
             self.state = np.expand_dims(self.state, axis=-1) 
@@ -455,11 +455,14 @@ class EnvBall:
         # set depth state(1 channel)
         elif self.state_type == "depth":
             # depth
-            self.state = self.frame
+            
+            inf=np.isinf(self.frame)
+            self.frame[inf]=2.5
+            self.state = self.frame*255/2.5
             # self.state = cv2.cvtColor(self.frame[:, :, :3], cv2.COLOR_BGR2GRAY) 
-            def save_array_to_txt(array, filename):
-                np.savetxt(filename, array)
-            save_array_to_txt(self.state, 'depth_image.txt')            
+            # def save_array_to_txt(array, filename):
+            #     np.savetxt(filename, array)
+            # save_array_to_txt(self.state, 'depth_image.txt')            
             
             #print("depth_shape",self.state.shape)
             self.state = np.expand_dims(self.state, axis=-1)  

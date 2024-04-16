@@ -17,3 +17,32 @@ reward_slope:			-10.0
 big_negative_reward:	-500.0
 -----------------------------------
 i_frame:	100,	i_episode:	4,	mean reward:	-671.67,	is_saved_model:	True
+i_frame:	200,	i_episode:	14,	mean reward:	-541.12,	is_saved_model:	True
+i_frame:	300,	i_episode:	19,	mean reward:	-563.97,	is_saved_model:	False
+i_frame:	400,	i_episode:	26,	mean reward:	-573.27,	is_saved_model:	False
+i_frame:	500,	i_episode:	33,	mean reward:	-573.34,	is_saved_model:	False
+i_frame:	600,	i_episode:	38,	mean reward:	-567.73,	is_saved_model:	False
+i_frame:	700,	i_episode:	44,	mean reward:	-599.7,	is_saved_model:	False
+i_frame:	800,	i_episode:	53,	mean reward:	-558.66,	is_saved_model:	False
+i_frame:	900,	i_episode:	54,	mean reward:	-603.27,	is_saved_model:	False
+i_frame:	1000,	i_episode:	64,	mean reward:	-554.87,	is_saved_model:	False
+i_frame:	1100,	i_episode:	70,	mean reward:	-569.59,	is_saved_model:	False
+i_frame:	1200,	i_episode:	80,	mean reward:	-557.5,	is_saved_model:	False
+i_frame:	1300,	i_episode:	86,	mean reward:	-559.51,	is_saved_model:	False
+i_frame:	1400,	i_episode:	90,	mean reward:	-604.58,	is_saved_model:	False
+i_frame:	1500,	i_episode:	100,	mean reward:	-549.58,	is_saved_model:	False
+i_frame:	1600,	i_episode:	104,	mean reward:	-554.79,	is_saved_model:	False
+i_frame:	1700,	i_episode:	107,	mean reward:	-542.62,	is_saved_model:	False
+i_frame:	1800,	i_episode:	117,	mean reward:	-548.89,	is_saved_model:	False
+i_frame:	1900,	i_episode:	119,	mean reward:	-599.93,	is_saved_model:	False
+i_frame:	2000,	i_episode:	127,	mean reward:	-630.04,	is_saved_model:	False
+i_frame:	2100,	i_episode:	135,	mean reward:	-563.39,	is_saved_model:	False
+i_frame:	2200,	i_episode:	142,	mean reward:	-565.33,	is_saved_model:	False
+i_frame:	2300,	i_episode:	155,	mean reward:	-539.58,	is_saved_model:	True
+i_frame:	2400,	i_episode:	157,	mean reward:	-578.84,	is_saved_model:	False
+i_frame:	2500,	i_episode:	164,	mean reward:	-601.24,	is_saved_model:	False
+i_frame:	2600,	i_episode:	168,	mean reward:	-594.04,	is_saved_model:	False
+i_frame:	2700,	i_episode:	175,	mean reward:	-583.44,	is_saved_model:	False
+i_frame:	2800,	i_episode:	182,	mean reward:	-573.49,	is_saved_model:	False
+i_frame:	2900,	i_episode:	185,	mean reward:	-597.55,	is_saved_model:	False
+end time: 2024-04-14 07:58:39
