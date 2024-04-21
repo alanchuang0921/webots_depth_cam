@@ -337,7 +337,12 @@ class EnvBall:
         if self.state_type == "numerical":
             self.observation_space = 10
         else:
-            channel_n = 3 if self.state_type == "RGB" else 1
+            if self.state_type == "RGB":
+                channel_n=3
+            elif self.state_type == "gray_depth":
+                channel_n=2
+            else:
+                channel_n=1
             self.observation_space = spaces.Box(low=0, 
                                                 high=255,
                                                 shape=(channel_n, 84, 84), 
@@ -450,7 +455,7 @@ class EnvBall:
             
 
             self.state = np.expand_dims(self.state, axis=-1) 
-            print("state.shape=",self.state.shape)  
+            #print("state.shape=",self.state.shape)  
         # ------------------------------------------------------------------------------
         # set depth state(1 channel)
         elif self.state_type == "depth":
@@ -467,6 +472,26 @@ class EnvBall:
             #print("depth_shape",self.state.shape)
             self.state = np.expand_dims(self.state, axis=-1)  
             #print("state.shape=",self.state.shape)  
+        # ---------------------------------------------------
+        elif self.state_type == "gray_depth":
+            #gray&depth
+            self.state = cv2.cvtColor(self.frame[:, :, :3], cv2.COLOR_BGR2GRAY)
+            # def save_array_to_txt(array, filename):
+            #     np.savetxt(filename, array)
+            # save_array_to_txt(self.state, 'GRAY_image.txt') 
+
+            self.frame2 = self.depth_cam.get_frame()
+            inf=np.isinf(self.frame2)
+            self.frame2[inf]=2.5
+            self.frame2 = self.frame2*255/2.5
+            # save_array_to_txt(self.frame2, 'depth_image.txt') 
+            self.state = np.expand_dims(self.state, axis=-1)
+            self.frame2 = np.expand_dims(self.frame2, axis=-1)
+            self.state = np.concatenate([self.state, self.frame2], axis=-1)
+            # print(f"self.frame shpae is {self.frame.shape}")
+            # self.state=cv2.merge([self.state,self.frame2])
+
+
 
 
         return self.state
@@ -617,7 +642,7 @@ class Camera:
     
     def get_frame(self):
         self.frame = np.frombuffer(self.cam_node.getImage(), dtype=np.uint8).reshape((self.cam_node.getHeight(), self.cam_node.getWidth(), 4))
-        print("frame.shape=",self.frame.shape)
+        # print("frame.shape=",self.frame.shape)
         return self.frame
     
     def show_frame(self):

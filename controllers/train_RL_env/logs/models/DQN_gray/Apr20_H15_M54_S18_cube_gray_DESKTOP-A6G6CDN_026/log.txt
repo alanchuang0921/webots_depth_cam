@@ -1,0 +1,39 @@
+current machine: DESKTOP-A6G6CDN
+current path: C:\alan\ROBOT\20240410\webots_tutorial\integration\controllers\train_RL_env
+current time: 2024-04-20 15:54:18
+-----------------------------------
+num_frames: 1500000
+-----------------------------------
+DQN hyperparameter
+LR:				0.0002
+TAU:			0.005
+MAX_BUFF:		100000
+EPS_DECAY:		500000
+BATCH_SIZE:		128
+LEARNING_START:	10000
+-----------------------------------
+env hyperparameter
+reward_slope:			-10.0
+big_negative_reward:	-500.0
+-----------------------------------
+i_frame:	100,	i_episode:	4,	mean reward:	-671.72,	is_saved_model:	True
+i_frame:	200,	i_episode:	6,	mean reward:	-621.85,	is_saved_model:	True
+i_frame:	300,	i_episode:	9,	mean reward:	-579.77,	is_saved_model:	True
+i_frame:	400,	i_episode:	14,	mean reward:	-599.51,	is_saved_model:	False
+i_frame:	500,	i_episode:	19,	mean reward:	-624.02,	is_saved_model:	False
+i_frame:	600,	i_episode:	23,	mean reward:	-606.28,	is_saved_model:	False
+i_frame:	700,	i_episode:	32,	mean reward:	-585.74,	is_saved_model:	False
+i_frame:	800,	i_episode:	37,	mean reward:	-562.0,	is_saved_model:	True
+i_frame:	900,	i_episode:	41,	mean reward:	-601.01,	is_saved_model:	False
+i_frame:	1000,	i_episode:	47,	mean reward:	-600.84,	is_saved_model:	False
+i_frame:	1100,	i_episode:	51,	mean reward:	-568.6,	is_saved_model:	False
+i_frame:	1200,	i_episode:	60,	mean reward:	-558.89,	is_saved_model:	True
+i_frame:	1300,	i_episode:	65,	mean reward:	-590.61,	is_saved_model:	False
+i_frame:	1400,	i_episode:	72,	mean reward:	-555.0,	is_saved_model:	True
+i_frame:	1500,	i_episode:	80,	mean reward:	-552.57,	is_saved_model:	True
+i_frame:	1600,	i_episode:	86,	mean reward:	-581.86,	is_saved_model:	False
+i_frame:	1700,	i_episode:	91,	mean reward:	-577.25,	is_saved_model:	False
+i_frame:	1800,	i_episode:	98,	mean reward:	-612.83,	is_saved_model:	False
+i_frame:	1900,	i_episode:	104,	mean reward:	-567.21,	is_saved_model:	False
+i_frame:	2000,	i_episode:	108,	mean reward:	-610.24,	is_saved_model:	False
+i_frame:	2100,	i_episode:	116,	mean reward:	-580.74,	is_saved_model:	False

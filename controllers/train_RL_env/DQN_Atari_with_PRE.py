@@ -138,7 +138,7 @@ class DQN(nn.Module):
 
 class Memory_Buffer_PER(object):
     # stored as ( s, a, r, s_ ) in SumTree
-    def __init__(self, memory_size=1000, a = 0.6, e = 0.01):
+    def __init__(self, memory_size=100000, a = 0.6, e = 0.01):
         self.tree =  SumTree(memory_size)
         self.memory_size = memory_size
         self.prio_max = 0.1

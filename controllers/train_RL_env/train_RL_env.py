@@ -9,7 +9,7 @@ import torch
 from torch.utils.tensorboard import SummaryWriter
 
 from DQN import DQN
-from DQN_Atari import DQNAgent
+from DQN_Atari_PER import DQNAgent
 from robot_controller_env import DRV90_Robot, EnvBall
 
 # ------------------------------------------------------------------
@@ -184,8 +184,8 @@ def train_RL_process_cam(log_dir, num_frames=100):
             
             # ------------------------------------------
             # Perform one step of the optimization
-            loss = agent.learn_from_experience()            
-            
+            loss,target_Q,predict_Q = agent.learn_from_experience()            
+
             # ------------------------------------------
             # Soft update of the target network's weights
             # θ′ ← τ θ + (1 −τ )θ′
@@ -204,7 +204,7 @@ def train_RL_process_cam(log_dir, num_frames=100):
                 # --------------------------------------
                 # print some 
                 mean_reward = np.mean(all_total_rewards[-10:])
-                print("frames: %5d, reward: %5f, loss: %5f, epsilon: %5f, episode: %4d" % (i_frame, np.mean(all_total_rewards[-10:]), loss, agent.epsilon, i_episode))
+                print("frames: %5d, reward: %5f, loss: %5f,target_Q:%5f,predict_Q:%5f, epsilon: %5f, episode: %4d" % (i_frame, np.mean(all_total_rewards[-10:]), loss,target_Q,predict_Q, agent.epsilon, i_episode))
                 # --------------------------------------
                 # save some 
                 if is_save:
@@ -343,7 +343,7 @@ if __name__ == "__main__":
     # -----------------------------------------------
     # env setting
     SEED = 525 
-    state_type = "depth"      # ["numerical", "RGB", "gray","depth"]
+    state_type = "gray"      # ["numerical", "RGB", "gray","depth","gray_depth"]
     model_name = f"DQN_{state_type}"
     num_frames = int(1.5e6)
     is_save = True
